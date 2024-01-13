@@ -1,5 +1,4 @@
-
-\b TIC TAC TOE \b
+TIC TAC TOE
 
 This is some python practice for me outside of the data science realm. I want to build my familiarity and
 comfortability with python. The majority of this code was created simply by following the tutorial by Code
