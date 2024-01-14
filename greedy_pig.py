@@ -14,16 +14,8 @@
 
 import random
 
-round_score = 0
-continue_game = True
-turn_count = 0
-
-player_score = []
-round_score = 0
-round_count = 1
-
 def roll_dice():
-    global round_score, continue_game
+    global round_score, continue_game, round_count
     roll = random.randint(1, 6)
     
     if roll == 1:
@@ -33,12 +25,12 @@ def roll_dice():
     else:
         round_score += roll
         print(f"You rolled a {roll}")
-        print(f"Your score is now: {round_score}")
+        print(f"Round {round_count} score: {round_score}")
 
 def get_user_input():
     while True:
         try:
-            user_input = input('Enter 1 if you want to roll again: ')
+            user_input = input('Enter 1 if you want to roll again - Press 0 if you want to stop: ')
             return int(user_input)
         except ValueError:
             print("Invalid input. Please enter a valid integer.")
@@ -53,7 +45,6 @@ def playRound():
             continue_game = get_user_input()
     print(f"Your score for Round {round_count} was {round_score}")
     print(f"You rolled {turn_count} time(s)")
-    pause()
     player_score.append(round_score)
     round_count += 1
     
@@ -63,15 +54,33 @@ def resetRound():
     continue_game = True
     turn_count = 0
     
+def pause():
+    global round_count, final_score, round_score
+    print(f"Your final score after Round {round_count} is {sum(player_score)+round_score}")
+    Pause = input("Press the <ENTER> key to continue to the next round...")
+    
+
+def start():
+    global round_score, round_count, player_score, turn_count, continue_game
+    start = input("Press <ENTER> to start the game")
+    round_score = 0
+    continue_game = True
+    turn_count = 0
+
+    player_score = []
+    round_score = 0
+    round_count = 1
+
 def playGame():
+    start()
     global round_count, final_score
-    while round_count <= 5:
+    while round_count < 5:
         resetRound()
         playRound()
+        pause()
+    resetRound()
+    playRound()
     final_score = sum(player_score)
     print(f"Your final score after 5 rounds is {final_score}")
-
-def pause():
-    Pause = input("Press the <ENTER> key to continue to the next round...")
 
 playGame()
