@@ -23,7 +23,7 @@ and play multiple rounds. Winner is who has the most points at the end of all th
 This game I coded completely from scratch. My next step for this game will be to allow this to be for multiple 
 players.
 
-## Blackjack
+## BLACKJACK
 
 I am challenging myself with a more involved game. I briefly skimmed https://gist.github.com/mjhea0/5680216 for
 some inspiration but this was largely done by scratch. I implemented a betting system and made the text more
