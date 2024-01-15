@@ -23,7 +23,7 @@ SUITS = ["C", "H", "S", "D"] #unused
 CARDS = [2,3,4,5,6,7,8,10,'J','Q','K','A'] * 4
 NEW_DECK = CARDS.copy()
 
-VALUE_10 = ["J","Q","K"]
+VALUE_10 = [10,"J","Q","K"]
 
 PLAYER_HAND = []
 DEALER_HAND = []
@@ -35,13 +35,14 @@ BUST = False
 MONEY = 1000
 BET = 0
 
+DOUBLE_DOWN = True
+
 # Pause function for UI
 def pause():
     pause = input("Press <ENTER> to continue...")
     
-
 def deal_cards():
-    global PLAYER_HAND, DEALER_HAND, CARDS
+    global PLAYER_HAND, DEALER_HAND, CARDS, MONEY
     PLAYER_HAND = CARDS[-2:]
     CARDS = CARDS[:-2]
     DEALER_HAND = CARDS[-2:]
@@ -51,9 +52,11 @@ def deal_cards():
     elif check_blackjack(PLAYER_HAND):
         print(f'Your have a {PLAYER_HAND[0]} and {PLAYER_HAND[1]}')
         print('You have blackjack! Lucky lucky')
+        MONEY += BET * 1.5
     elif check_blackjack(DEALER_HAND):
         print(f'Your have a {PLAYER_HAND[0]} and {PLAYER_HAND[1]}')
         print("Unlucky, Dealer got Blackjack")
+        MONEY -= BET
     else:
         print(f'Your cards are a {PLAYER_HAND[0]} and {PLAYER_HAND[1]}')
         print(f'The Dealer shows a {DEALER_HAND[0]}')
@@ -67,6 +70,8 @@ def calculate_score(hand, score):
             score += 10
 
     if "A" in hand:
+        count_A = hand.count("A")
+        score += count_A - 1
         if score + 11 <= 21:
             return score + 11
         else:
@@ -86,9 +91,28 @@ def check_blackjack(hand):
             return False
 
 def playerChoice():
-    global PLAYER_SCORE, PLAYER_HAND, CARDS, BUST
+    global PLAYER_SCORE, PLAYER_HAND, CARDS, BUST, DOUBLE_DOWN, BET
     PLAYER_SCORE = calculate_score(PLAYER_HAND, PLAYER_SCORE)
     print(f'Your score right now is {PLAYER_SCORE}')
+
+    if PLAYER_SCORE in [9,10,11] and DOUBLE_DOWN == True:
+        double = int(input("Enter 1 to Double Down: "))
+        if double == 1:
+            BET *= 2
+            PLAYER_HAND.append(CARDS[-1])
+            print(f'You drew a {CARDS[-1]}')
+            CARDS = CARDS[:-1]
+            PLAYER_SCORE = calculate_score(PLAYER_HAND, PLAYER_SCORE)
+            if PLAYER_SCORE > 21:
+                print('BUST!!')
+                PLAYER_SCORE = 0
+                BUST = True
+            else:
+                print(f'You score: {PLAYER_SCORE}')
+                return
+            
+    DOUBLE_DOWN = False
+
     print("------------------------------------------")
     choice = int(input("Enter 1 to hit - Enter 0 to stay: "))
     print("------------------------------------------")
@@ -116,16 +140,16 @@ def dealerMove():
     if BUST == True:
         return
     DEALER_SCORE = calculate_score(DEALER_HAND, DEALER_SCORE)
-    if DEALER_SCORE < 16:
+    if DEALER_SCORE <= 16:
         DEALER_HAND.append(CARDS[-1])
         print(f'Dealer drew a {CARDS[-1]}')
         CARDS = CARDS[:-1]
         DEALER_SCORE = calculate_score(DEALER_HAND, DEALER_SCORE)
         if DEALER_SCORE > 21:
-            print('Dealer bust')
+            print('Dealer Bust')
             DEALER_SCORE = 0
             return
-        elif DEALER_SCORE > 16 or DEALER_SCORE > PLAYER_SCORE:
+        elif DEALER_SCORE > 17:
             return
         else:
             stop = input('...')
@@ -143,7 +167,7 @@ def winner():
         MONEY -= BET
         return
     elif DEALER_SCORE == 0:
-        print('Dealer Buster - Player Wins!')
+        print('Dealer Busted - Player Wins!')
         MONEY += BET
         return
     if DEALER_SCORE > PLAYER_SCORE:
@@ -169,12 +193,13 @@ def getBet():
 
 def testing():
     global DEALER_HAND, PLAYER_HAND, BET, MONEY, CARDS
+    MONEY = 1000
     playAgain = True
     print("Welcome to Chen's Casino - Good Luck!")
     print("------------------------------------------")
     while playAgain == 1:
-        MONEY = 1000
         BUST = False
+        DOUBLE_DOWN = True
         CARDS = NEW_DECK.copy()
         print(f"You have ${MONEY}")
         BET = getBet()
@@ -203,7 +228,13 @@ def testing():
             print("Looks like you're broke. Better luck next time!")
             return
         print(f"You now have ${MONEY}")
-        playAgain = int(input("Enter 1 to play again - Enter 0 to quit: "))
+        print("------------------------------------------")
+        while True:
+            try:
+                playAgain = int(input("Enter 1 to play again - Enter 0 to quit: "))
+                break
+            except ValueError:
+                print("Invalid input. Please enter a valid integer.")
     print("------------------------------------------")
     print(f"Bye bye now - Come back soon to Chen's Casino")
 
