@@ -20,4 +20,19 @@ The rules of the game are very simple. You roll keep rolling a dice. Whatever nu
 your score. However, if you roll a 1, your score drops to 0. You can play the game with multiple people 
 and play multiple rounds. Winner is who has the most points at the end of all the round.
 
-This game I coded completely from scratch. My next step for this game will be to allow this to be for multiple players.
+This game I coded completely from scratch. My next step for this game will be to allow this to be for multiple 
+players.
+
+## Blackjack
+
+I am challenging myself with a more involved game. I briefly skimmed https://gist.github.com/mjhea0/5680216 for
+some inspiration but this was largely done by scratch. I implemented a betting system and made the text more
+engaging.
+
+Ideas to build upon this game are:
+1. Insurance
+2. Splitting
+3. Doubling Down
+4. Multiple Players
+5. Cards including sutis
+6. Multiple decks 
