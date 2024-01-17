@@ -1,8 +1,9 @@
 # Python Games
 
-To better myself with Python, I am coding some simple games into Python.
+To better myself with Python, I am coding some simple games into Python. This has become a fun break from
+data science classes and a way to track my progress with python.
 
-## TIC TAC TOE
+## TIC TAC TOE (01/13/24 - 01/14/24)
 
 This is some python practice for me outside of the data science realm. I want to build my familiarity and
 comfortability with python. The majority of this code was created simply by following the tutorial by Code
@@ -13,7 +14,7 @@ to play multiple games, as well as taking care of some issues with the tutorial 
 
 I have created a PvP game as well as a PvC version of the game.
 
-## GREEDY PIG
+## GREEDY PIG (01/14/24)
 
 This is a probability game that I loved to play with my students when I was teaching high school math.
 The rules of the game are very simple. You roll keep rolling a dice. Whatever number you get is added to 
@@ -23,16 +24,22 @@ and play multiple rounds. Winner is who has the most points at the end of all th
 This game I coded completely from scratch. My next step for this game will be to allow this to be for multiple 
 players.
 
-## BLACKJACK
+## BLACKJACK (01/15/24)
 
 I am challenging myself with a more involved game. I briefly skimmed https://gist.github.com/mjhea0/5680216 for
 some inspiration but this was largely done by scratch. I implemented a betting system and made the text more
 engaging.
 
 Ideas to build upon this game are:
-1. Insurance
-2. Splitting
-3. Doubling Down
-4. Multiple Players
-5. Cards including sutis
-6. Multiple decks 
+- [x] Insurance
+- [ ] Splitting
+- [x] Doubling Down
+- [ ] Multiple Players
+- [ ] Cards including sutis
+- [ ] Multiple decks
+
+## High Low Red Black (01/17/24)
+This began as just practice with working with classes. Used classes to make a deck of cards.
+
+Then I applied this to a simple game of High Low Red Black.
+   
