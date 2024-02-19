@@ -4,7 +4,7 @@ To better myself with Python, I am coding some simple games into Python. This ha
 data science classes and a way to track my progress with python.
 
 ## High Low Red Black (01/17/24)
-This began as just practice with working with classes. Used classes to make a deck of cards.
+This began as just practice with working with OOP. Used classes to make a deck of cards.
 
 Then I applied this to a simple game of High Low Red Black.
 
