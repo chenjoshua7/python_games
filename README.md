@@ -3,12 +3,12 @@
 To better myself with Python, I am coding some simple games into Python. This has become a fun break from
 data science classes and a way to track my progress with python.
 
-## High Low Red Black (01/17/24)
+## High Low Red Black
 This began as just practice with working with OOP. Used classes to make a deck of cards.
 
 Then I applied this to a simple game of High Low Red Black.
 
-## BLACKJACK (01/15/24)
+## BLACKJACK
 
 I am challenging myself with a more involved game. I briefly skimmed https://gist.github.com/mjhea0/5680216 for
 some inspiration but this was largely done by scratch. I implemented a betting system and made the text more
@@ -22,7 +22,7 @@ Ideas to build upon this game are:
 - [ ] Cards including sutis
 - [ ] Multiple decks
 
-## GREEDY PIG (01/14/24)
+## GREEDY PIG
 
 This is a probability game that I loved to play with my students when I was teaching high school math.
 The rules of the game are very simple. You roll keep rolling a dice. Whatever number you get is added to 
@@ -32,7 +32,7 @@ and play multiple rounds. Winner is who has the most points at the end of all th
 This game I coded completely from scratch. My next step for this game will be to allow this to be for multiple 
 players.
    
-## TIC TAC TOE (01/13/24 - 01/14/24)
+## TIC TAC TOE
 
 This is some python practice for me outside of the data science realm. I want to build my familiarity and
 comfortability with python. The majority of this code was created simply by following the tutorial by Code
